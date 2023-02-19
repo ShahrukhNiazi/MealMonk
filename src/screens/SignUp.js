@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,7 +10,17 @@ import {
 import Input from '../components/Input';
 import Button from '../components/Button';
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [address, setAddress] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignUpPress = () => {
+    console.log(name, email, mobile, address, password);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.dflex}>
@@ -18,16 +28,41 @@ const SignUp = () => {
         <Text style={styles.signText}>Add your details to sign up</Text>
       </View>
       <ScrollView>
-        <Input placeholder="Name" />
-        <Input placeholder="Email" />
-        <Input placeholder="Mobile No" />
-        <Input placeholder="Address" />
-        <Input placeholder="Password" />
+        <Input
+          placeholder="Name"
+          onChangeText={e => {
+            setName(e);
+          }}
+        />
+        <Input
+          placeholder="Email"
+          onChangeText={e => {
+            setEmail(e);
+          }}
+        />
+        <Input
+          placeholder="Mobile No"
+          onChangeText={e => {
+            setMobile(e);
+          }}
+        />
+        <Input
+          placeholder="Address"
+          onChangeText={e => {
+            setAddress(e);
+          }}
+        />
+        <Input
+          placeholder="Password"
+          onChangeText={e => {
+            setPassword(e);
+          }}
+        />
         <Input placeholder="Confirm Password" />
-        <Button login="login" />
+        <Button login="login" color="#FC6011" onPress={handleSignUpPress} />
         <View style={styles.accountText}>
           <Text>Already have an Account? </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.accountLoginText}>Login</Text>
           </TouchableOpacity>
         </View>

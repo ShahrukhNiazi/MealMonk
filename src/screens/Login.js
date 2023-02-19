@@ -10,7 +10,7 @@ import {
 import Input from '../../src/components/Input';
 import Button from '../../src/components/Button';
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   console.log(name, password);
@@ -38,17 +38,16 @@ const Login = () => {
             setPassword(e);
           }}
         />
-        <Button login="login" onPress={handleLoginPress} />
+        <Button login="login" color="#FC6011" onPress={handleLoginPress} />
         <View style={styles.dflex}>
           <Text style={styles.forgetText}>Forgot your password?</Text>
           <Text style={styles.forgetText}>or Login With</Text>
         </View>
-        <TouchableOpacity style={styles.Facebookbutton}>
-          <Text style={styles.FacebookbuttonText}>Login with Facebook</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.Facebookbutton}>
-          <Text style={styles.FacebookbuttonText}>Login with Facebook</Text>
-        </TouchableOpacity>
+        <Button
+          login="Login with Facebook"
+          color="#000"
+          onPress={() => navigation.navigate('SignUp')}
+        />
       </ScrollView>
     </View>
   );

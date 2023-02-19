@@ -9,10 +9,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Button, Input} from './src/components';
+import AppContainer from './src/navigation';
 import {Login, SignUp} from './src/screens';
 
 const App = () => {
-  return <SignUp />;
+  return <AppContainer />;
 };
 
 export default App;
